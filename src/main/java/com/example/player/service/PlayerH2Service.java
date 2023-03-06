@@ -45,7 +45,7 @@ public class PlayerH2Service implements PlayerRepository{
     @Override
     public Player addPlayer(Player player){
        db.update("insert into TEAM(playerName,jerseyNumber,role) values(?,?,?)",player.getPlayerName(),player.getJerseyNumber(),player.getRole());
-       Player savedPlayer = db.queryForObject("select * from TEAM where playerName=?,jerseyNumber=? and role=?",new PlayerRowMapper(),player.getPlayerName(),
+       Player savedPlayer = db.queryForObject("select * from TEAM where playerName=? and jerseyNumber=? and role=?",new PlayerRowMapper(),player.getPlayerName(),
        player.getJerseyNumber(),player.getRole());
        return savedPlayer;
     }
